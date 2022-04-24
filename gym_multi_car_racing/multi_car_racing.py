@@ -725,7 +725,7 @@ if __name__=="__main__":
         while True:
             s, r, done, info = env.step(a)
             total_reward += r
-            if steps % 200 == 0 or done:
+            # if steps % 200 == 0 or done:
                 # print("\nActions: " + str.join(" ", ["Car "+str(x)+": "+str(a[x]) for x in range(NUM_CARS)]))
                 # print("Step "str(step)s+" Total_reward "+str(total_reward))
                 #import matplotlib.pyplot as plt

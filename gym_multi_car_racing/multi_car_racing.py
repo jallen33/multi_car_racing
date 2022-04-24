@@ -529,7 +529,7 @@ class MultiCarRacing(gym.Env, EzPickle):
         if self.viewer[car_id] is None:
             from gym.envs.classic_control import rendering
             self.viewer[car_id] = rendering.Viewer(WINDOW_W, WINDOW_H)
-            self.viewer[car_id].window.set_caption(f"Car {car_id}")
+            self.viewer[car_id].window.set_caption("Car "+str(car_id))
             self.score_label = pyglet.text.Label('0000', font_size=36,
                 x=20, y=WINDOW_H*2.5/40.00, anchor_x='left', anchor_y='center',
                 color=(255,255,255,255))

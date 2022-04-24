@@ -103,7 +103,7 @@ class FrictionDetector(contactListener):
         tile.color[1] = ROAD_COLOR[1]
         tile.color[2] = ROAD_COLOR[2]
 
-        # This check seems to implicitly make sure that we only look at wheels as the tiles 
+        # This check seems to implicitly make sure that we only look at wheels as the tiles
         # attribute is only set for wheels in car_dynamics.py.
         if not obj or "tiles" not in obj.__dict__:
             return
@@ -408,8 +408,8 @@ class MultiCarRacing(gym.Env, EzPickle):
         return self.step(None)[0]
 
     def step(self, action):
-        """ Run environment for one timestep. 
-        
+        """ Run environment for one timestep.
+
         Parameters:
             action(np.ndarray): Numpy array of shape (num_agents,3) containing the
                 commands for each car. Each command is of the shape (steer, gas, brake).
@@ -498,7 +498,7 @@ class MultiCarRacing(gym.Env, EzPickle):
             if len(self.track) in self.tile_visited_count:
                 done = True
 
-            # The car that leaves the field experiences a reward of -100 
+            # The car that leaves the field experiences a reward of -100
             # and the episode is terminated subsequently.
             for car_id, car in enumerate(self.cars):
                 x, y = car.hull.position
@@ -514,12 +514,12 @@ class MultiCarRacing(gym.Env, EzPickle):
         result = []
         for cur_car_id in range(self.num_agents):
             result.append(self._render_window(cur_car_id, mode))
-        
+
         return np.stack(result, axis=0)
 
     def _render_window(self, car_id, mode):
-        """ Performs the actual rendering for each car individually. 
-        
+        """ Performs the actual rendering for each car individually.
+
         Parameters:
             car_id(int): Numerical id of car for which the corresponding window
                 will be rendered.
@@ -539,7 +539,7 @@ class MultiCarRacing(gym.Env, EzPickle):
 
         zoom = 0.1*SCALE*max(1-self.t, 0) + ZOOM*SCALE*min(self.t, 1)   # Animate zoom first second
         #NOTE (ig): Following two variables seemed unused. Commented them out.
-        #zoom_state  = ZOOM*SCALE*STATE_W/WINDOW_W 
+        #zoom_state  = ZOOM*SCALE*STATE_W/WINDOW_W
         #zoom_video  = ZOOM*SCALE*VIDEO_W/WINDOW_W
         scroll_x = self.cars[car_id].hull.position[0]
         scroll_y = self.cars[car_id].hull.position[1]
@@ -726,8 +726,8 @@ if __name__=="__main__":
             s, r, done, info = env.step(a)
             total_reward += r
             if steps % 200 == 0 or done:
-                print("\nActions: " + str.join(" ", [f"Car {x}: "+str(a[x]) for x in range(NUM_CARS)]))
-                print(f"Step {steps} Total_reward "+str(total_reward))
+                # print("\nActions: " + str.join(" ", ["Car "+str(x)+": "+str(a[x]) for x in range(NUM_CARS)]))
+                # print("Step "str(step)s+" Total_reward "+str(total_reward))
                 #import matplotlib.pyplot as plt
                 #plt.imshow(s)
                 #plt.savefig("test.jpeg")
